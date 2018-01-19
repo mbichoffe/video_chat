@@ -26,14 +26,17 @@ $(function() {
 
     // Helper function to print chat message to the chat window
     function printMessage(fromUser, message) {
-        var $user = $('<span class="username">').text(fromUser + ':');
+        var $user = $('<li class="media m-b-md">');
         if (fromUser === username) {
-            $user.addClass('me');
+            $user.addClass('media-current-user');
+        } else {
+            $user.addClass('media-left');
         }
-        var $message = $('<span class="message">').text(message);
-        var $container = $('<div class="media-body-text">');
-        $container.append($user).append($message);
-        $chatWindow.append($container);
+        var $message = $('<div class="media-body-text">').html(message);
+        var $container = $('<div class="media-body">');
+        ($user).append($container).append($message);
+        $chatWindow.append($user);
+        console.log($container)
         $chatWindow.scrollTop($chatWindow[0].scrollHeight);
     }
 
