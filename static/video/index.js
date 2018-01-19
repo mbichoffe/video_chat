@@ -15,7 +15,7 @@ $(function() {
 
     // Helper function to print info messages to the chat window
     function print(infoMessage, asHtml) {
-        var $msg = $('<div class="info">');
+        var $msg = $('<div class="modal-body">');
         if (asHtml) {
             $msg.html(infoMessage);
         } else {
@@ -31,14 +31,13 @@ $(function() {
             $user.addClass('me');
         }
         var $message = $('<span class="message">').text(message);
-        var $container = $('<div class="message-container">');
+        var $container = $('<div class="media-body-text">');
         $container.append($user).append($message);
         $chatWindow.append($container);
         $chatWindow.scrollTop($chatWindow[0].scrollHeight);
     }
 
     // Alert the user they have been assigned a random username
-    print('             ')
     print('Logging in...');
 
     // Get an access token for the current user, passing a username (identity)
@@ -61,7 +60,7 @@ $(function() {
         // Get the general chat channel, which is where all the messages are
         // sent in this simple application
         print('Attempting to join "One-on-one" chat channel...');
-        var promise = chatClient.getChannelByUniqueName('one-on-one');
+        var promise = chatClient.getChannelByUniqueName('two-on-two');
         promise.then(function(channel) {
             generalChannel = channel;
             console.log('Found one-on-one channel:');
@@ -71,7 +70,7 @@ $(function() {
             // If it doesn't exist, let's create it
             console.log('Creating general channel');
             chatClient.createChannel({
-                uniqueName: 'one-on-one',
+                uniqueName: 'two-on-two',
                 friendlyName: 'One-on-one Chat Channel'
             }).then(function(channel) {
                 console.log('Created one-on-one channel:');

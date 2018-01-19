@@ -8,6 +8,9 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <title>Video Conference</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="../dist/toolkit.min.css" rel="stylesheet">
     <link rel="stylesheet" href="site.css">
   </head>
 <body id="fullsingle" class="page-template-page-fullsingle-split">
@@ -16,15 +19,17 @@
   <!-- video side -->
   <div class="split-media">
     <div id="remote-media"></div>
+    <div id="preview">
     <div id="local-media"></div>
-    <div id="preview"></div>
-<!--           <button id="button-preview">Preview My Camera</button> -->
+    </div>
     <div id="controls">
       <div id="video-controls">
         <p class="instructions">Room Name:</p>
-        <input id="room-name" type="text" placeholder="Enter a room name" />
-        <button id="button-join">Join Room</button>
-        <button id="button-leave">Leave Room</button>
+        <input id="room-name" type="text" value="marina" />
+        <button class="btn btn-pill btn-success" id="button-join">Join Room</button>
+        <button class="btn btn btn-pill btn-info" id="button-preview">Preview
+      </button>
+        <button class="btn btn-pill btn-danger" id="button-leave">Hang up</button>
       <div id="log"></div>
       </div>
     </div>
@@ -32,19 +37,26 @@
 
   <!-- end of video -->
   <div class="split-content">
-    <div id="room-controls">  
-     <section>
-        <div id="messages"></div>
-        <input id="chat-input" type="text" placeholder="say anything" autofocus/>
-      </section>
-    </div>
-  </div>
+      <div class="modal-dialog modal-md" id="room-controls"> 
+        <div class="modal-content"> 
+          <section class="media-list media-list-conversation c-w-md">
+            <div class="media-body-text" id="messages"></div>
+          <div class="modal-body">
+          <input id="chat-input" type="text" class="form-control" placeholder="Message" autofocus/>
+          </div>
+          </section>  
+        </div>
+      </div>
 </div>
+
+
 
     <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
     <script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0/twilio-video.js"></script>
     <script src="https://media.twiliocdn.com/sdk/js/chat/v1.0/twilio-chat.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="../dist/toolkit.min.js"></script>
     <script src="quickstart.js"></script>
     <script src="index.js"></script>
   </body>

@@ -45,6 +45,7 @@ $.getJSON('/token', function(data) {
 
   // Bind button to join room
   document.getElementById('button-join').onclick = function () {
+    //hardcoded for demo purposes
     roomName = document.getElementById('room-name').value;
     if (roomName) {
       log("Joining room '" + roomName + "'...");
@@ -75,6 +76,7 @@ function roomJoined(room) {
 
   log("Joined as '" + identity + "'");
   document.getElementById('button-join').style.display = 'none';
+  document.getElementById('button-preview').style.display = 'none';
   document.getElementById('button-leave').style.display = 'inline';
 
   // Draw local video, if not already previewing
@@ -119,6 +121,7 @@ function roomJoined(room) {
     room.participants.forEach(detachParticipantTracks);
     activeRoom = null;
     document.getElementById('button-join').style.display = 'inline';
+    document.getElementById('button-preview').style.display = 'inline';
     document.getElementById('button-leave').style.display = 'none';
   });
 }
@@ -134,6 +137,7 @@ document.getElementById('button-preview').onclick = function() {
     var previewContainer = document.getElementById('local-media');
     if (!previewContainer.querySelector('video')) {
       attachTracks(tracks, previewContainer);
+      document.getElementById('button-preview').style.display = 'none';
     }
   }, function(error) {
     console.error('Unable to access local media', error);
