@@ -4,6 +4,7 @@ var identity;
 var roomName;
 
 function attachTracks(tracks, container) {
+  console.log(tracks, container)
   tracks.forEach(function(track) {
     container.appendChild(track.attach());
   });
@@ -17,6 +18,7 @@ function attachParticipantTracks(participant, container) {
 function detachTracks(tracks) {
   tracks.forEach(function(track) {
     track.detach().forEach(function(detachedElement) {
+      console.log(detachedElement)
       detachedElement.remove();
     });
   });

@@ -38,6 +38,7 @@ $(function() {
     }
 
     // Alert the user they have been assigned a random username
+    print('             ')
     print('Logging in...');
 
     // Get an access token for the current user, passing a username (identity)
@@ -48,7 +49,7 @@ $(function() {
     }, function(data) {
         // Alert the user they have been assigned a random username
         username = data.identity;
-        print('You have been assigned a random username of: ' 
+        print('Your username is: ' 
             + '<span class="me">' + username + '</span>', true);
 
         // Initialize the Chat client
@@ -59,21 +60,21 @@ $(function() {
     function createOrJoinGeneralChannel() {
         // Get the general chat channel, which is where all the messages are
         // sent in this simple application
-        print('Attempting to join "general" chat channel...');
-        var promise = chatClient.getChannelByUniqueName('general');
+        print('Attempting to join "One-on-one" chat channel...');
+        var promise = chatClient.getChannelByUniqueName('one-on-one');
         promise.then(function(channel) {
             generalChannel = channel;
-            console.log('Found general channel:');
+            console.log('Found one-on-one channel:');
             console.log(generalChannel);
             setupChannel();
         }).catch(function() {
             // If it doesn't exist, let's create it
             console.log('Creating general channel');
             chatClient.createChannel({
-                uniqueName: 'general',
-                friendlyName: 'General Chat Channel'
+                uniqueName: 'one-on-one',
+                friendlyName: 'One-on-one Chat Channel'
             }).then(function(channel) {
-                console.log('Created general channel:');
+                console.log('Created one-on-one channel:');
                 console.log(channel);
                 generalChannel = channel;
                 setupChannel();

@@ -33,6 +33,9 @@ def config():
         TWILIO_SYNC_SERVICE_SID=os.environ.get('TWILIO_SYNC_SERVICE_SID', 'default'),
     )
 
+@app.route('/css')
+def css():
+    return app.send_static_file('testcss/layout.html')
 
 @app.route('/')
 def index():
