@@ -33,9 +33,6 @@ def config():
         TWILIO_SYNC_SERVICE_SID=os.environ.get('TWILIO_SYNC_SERVICE_SID', 'default'),
     )
 
-@app.route('/css')
-def css():
-    return app.send_static_file('testcss/layout.html')
 
 @app.route('/')
 def index():
@@ -44,10 +41,6 @@ def index():
 @app.route('/video/')
 def video():
     return app.send_static_file('video/index.html')
-
-@app.route('/sync/')
-def sync():
-    return app.send_static_file('sync/index.html')
 
 @app.route('/chat/')
 def chat():
@@ -110,4 +103,4 @@ def provision_sync_default_service():
 
 if __name__ == '__main__':
     provision_sync_default_service()
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
